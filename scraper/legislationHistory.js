@@ -37,7 +37,7 @@ const getDetail = async (legislation) => {
         $(el).find('td').each((i, cell) => {
             const txt = $(cell).text() && $(cell).text().trim() ? $(cell).text().trim() : null;
             if (i == 0) step.date = txt ? dayjs(txt, 'M/D/YYYY').toDate() : null;
-            else if (i == 1) step.version = txt;
+            else if (i == 1) step.version = (txt || '').replace('.', ''); // Instance of version = .3, data error
             else if (i == 2) step.action_by = txt;
             else if (i == 3) step.action = txt;
             else if (i == 4) step.result = txt;
